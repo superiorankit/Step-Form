@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Exo", sans-serif;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 10px;
+    margin-right: 20px;
+    left: 30px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--quaternary); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--primaryColor);
+    border-radius:10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--tertiaryColor); 
+  }
+
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  
+
+:root{
+    --primaryColor: #0d1423;
+    --secondaryColor: #121c30;
+    --tertiaryColor: #FF204E;;
+    --quaternary: #ee95b0;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: var(--tertiaryColor);
+    font-family: "Exo 2", sans-serif;
+}
+
+li{
+    list-style: none;
+}
+
+
+.main {
+    background-image:linear-gradient(315deg, #010212e0, #010212de), url("../images/mainBg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3% 0;
+    position: relative;
+    overflow: auto;
+    flex-direction: column;
+}
+
+@keyframes zoomOut {
+    from{
+        transform: scale(1.6);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+    
+}
+
+
+.detailsBox {
+    width: 64%;
+    background: linear-gradient(45deg, #ffffff14, transparent), #121c309e;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(3px);
+    border-radius: 33px;
+    padding: 20px 0px;
+    padding-bottom: 40px;
+    animation: zoomOut 0.2s ease-in normal forwards;
+    overflow: auto;
+}
+
+h1 {
+    font-size: 3.3em;
+}
+
+p {
+    font-size: 0.8em;
+    color: var(--quaternary);
+    font-weight: 600;
+}
+
+.infoBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.InfoBox {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 7px;
+    margin-bottom: 33px;
+    width: 60%;
+}
+
+.singleInfo {
+    display: flex;
+    width: 50%;
+    margin: 15px 0;
+    justify-content: center;
+}
+
+.singleInfo h6 {
+    margin-right: 10px;
+    font-size: 0.8em;
+}
+
+.teamInfo h4{
+    width: 100%;
+    text-align: center;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+.teamInfo .InfoBox{
+    margin: 0;
+}
+
+.teamInfo .singleInfo{
+    margin: 0;
+}

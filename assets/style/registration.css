@@ -1,0 +1,370 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Exo", sans-serif;
+}
+
+/* hide scrollbar but allow scrolling */
+::-webkit-scrollbar {
+    display: none;
+}
+
+:root{
+    --primaryColor: #0d1423;
+    --secondaryColor: #121c30;
+    --tertiaryColor: #FF204E;;
+    --quaternary: #ee95b0;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: var(--tertiaryColor);
+    font-family: "Exo 2", sans-serif;
+}
+
+li{
+    list-style: none;
+}
+
+
+.main {
+    background-image:linear-gradient(315deg, #010212a3, #010212a3), url("../images/mainBg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3% 0;
+    position: relative;
+    overflow-x: hidden;
+    flex-direction: column;
+}
+
+/* Styles for the barBox class */
+.barBox {
+    display: flex;
+    /* flex-direction: column; */
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px;
+    border-radius: 51px;
+    background: linear-gradient(45deg, #ffffff14, transparent), #0d142361;;
+    backdrop-filter: blur(3px);
+}
+
+/* Styles for the barBlue class */
+.barBlue {
+    background-color: var(--quaternary);
+    position: absolute;
+    width: calc(100% - 10px);
+    height: 5px;
+    top: 50%;
+    transform: translatey(-50%);
+}
+
+/* Styles for the barRed class */
+.barRed {
+    background-color: var(--tertiaryColor);
+    width: 0%;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+/* Styles for the barIcon class */
+.barIcon {
+    position: relative;
+    background-color: var(--quaternary);
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    font-weight: bold;
+    color: var(--primaryColor);
+    border: 5px solid var(--tertiaryColor);
+}
+
+/* Styles for the img inside barIcon */
+.barIcon img {
+    /* height: 50px; */
+    position: absolute;
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+}
+
+.crousBox{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.crous {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    padding: 30px 0;
+    align-items: center;
+    width: calc(100% - 100px);
+    height: 100%;
+    box-shadow: 0px 0px 12px -4px black;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.5s;
+    background: linear-gradient(45deg, #ffffff14, transparent), #0d1423de;
+    backdrop-filter: blur(3px);
+    border-radius: 42px;
+    transform: translateX(50px) scale(0.9);
+    margin-top: 1%;
+    overflow-y: scroll;
+}
+
+
+
+.buttleft {
+    position: absolute;
+    left: 0%;
+    bottom: 50%;
+    z-index: 100;
+    display: none;
+}
+
+.buttright {
+    position: absolute;
+    right: 0%;
+    bottom: 50%;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    margin: 27px 0;
+}
+
+
+
+.inputBox {
+    margin-bottom: 20px;
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.inputBox label {
+    display: block;
+    font-size: 0.9em;
+    color: var(--quaternary);
+    font-weight: 600;
+}
+
+@keyframes vibrate{
+    from{
+        left:-2px;
+    }
+    to{
+        left:2px;
+    }
+}
+
+/* Autocomplete in chrome changes bg color of input so giving custom css */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-text-fill-color: #e5a8ba;
+    box-shadow: inset 0 0 20px 20px #090f1b;
+    caret-color: rgba(255, 255, 255, 0.614);
+}
+
+
+
+.inputBox input[type="text"],
+.inputBox input[type="tel"],
+.inputBox input[type="email"],
+.inputBox input[type="password"]{
+    width: 70%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: #090f1b;
+    color: #e5a8ba;
+    position: relative;
+}
+
+.radioBox{
+    width: 70%;
+    align-items: center;
+    padding: 5px;
+    display: flex;
+    position: relative;
+}
+
+/* Styles for gender labels */
+.genderLabel {
+    font-size: 0.8em !important;
+    margin: 0 2%;
+}
+
+.inputBox input[type="radio"]{
+    margin-right: 10%;
+    filter: hue-rotate(126deg);
+}
+
+
+.tooltip{
+    position: absolute;
+    right: -18px;
+    color: var(--quaternary);
+    font-weight: 600;
+    padding: 0.5px 4.5px;
+    border: 1px solid var(--quaternary);
+    font-size: 0.5em;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.tooltipTxt{
+    position: absolute;
+    background-color: var(--secondaryColor);
+    color: var(--quaternary);
+    font-size: 0.7em;
+    border-radius: 10px;
+    right: 10px;
+    top: 50%;
+    transform: translatey(-50%);
+    padding: 10px;
+    transition: all 0.3s;
+    opacity: 0;
+    z-index: -1;
+}
+
+.tooltipTxt li{
+    margin: 5px;
+}
+
+.tooltip:hover+.tooltipTxt{
+    opacity: 1;
+    z-index: 100;
+}
+
+.eye{
+    position: absolute;
+    width: 20px;
+    right: 5px;
+    cursor: pointer;
+}
+
+
+.error{
+    position: absolute;
+    font-size: 0.6em;
+    color: var(--quaternary);
+    right: 0px;
+    top: 100%;
+    display: none;
+}
+
+
+.btnGroup{
+    display: flex;
+    position: relative;
+    top: 5%;
+    margin-left: auto;
+}
+
+
+
+/* Styles for the submit button */
+button {
+    display: block;
+    padding: 10px 20px;
+    background-color: var(--tertiaryColor);
+    font-weight: bold;
+    font-family: "Exo 2", sans-serif;
+    letter-spacing: 0.5px;
+    color: var(--quaternary);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 7px;
+}
+
+button:hover {
+    background-color: #e90030;
+}
+
+button:active{
+    transform: scale(0.8);
+}
+
+.crous3{
+    padding: 30px;
+    align-items: start;
+}
+
+.termsTxt{
+    height: 80%;
+    color: var(--quaternary);
+    font-size: 0.8em;
+    overflow: scroll;
+    border: 1px solid #ee95b040;
+    padding: 0 10px;
+    border-radius: 21px;
+}
+
+.termsTxt p{
+    margin: 10px 0;
+}
+
+.checkDiv{
+    position: relative;
+}
+
+.checkDiv input, .checkDiv label{
+    cursor: pointer;
+    color: var(--quaternary);
+    margin: 10px 0;
+}
+
+.checkDiv input{
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.crous3 button{
+    margin-left: auto;
+}
+
+.loaderBox{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    place-content: center;
+    background-color: #121c30b6;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.loader {
+    border: 5px solid var(--quaternary);
+    border-radius: 50%;
+    border-top: 5px solid var(--tertiaryColor);
+    width: 40px;
+    height: 40px;
+    animation: spin 0.7s linear infinite;
+  }

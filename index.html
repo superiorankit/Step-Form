@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="icon" type="image/x-icon" href="./assets/icon/valorantIcon.png"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Exo:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/style/registration.css" />
+
+
+</head>
+
+<body>
+    <div class="main">
+
+        <div class="barBox">
+            <div class="barBlue">
+                <div class="barRed" id="barRed"></div>
+            </div>
+
+            <div class="barIcon" id="barIcon1">
+                <img src="./assets/images/profile.png" alt="profile" />
+                <!-- <p>1</p> -->
+            </div>
+
+            <div class="barIcon" id="barIcon2">
+                <img src="./assets/images/team.png" alt="team" />
+            </div>
+
+            <div class="barIcon" id="barIcon3">
+                <img src="./assets/images/terms-and-conditions.png" style="margin-left: 2px;" alt="terms" />
+            </div>
+
+        </div>
+
+        <div class="crousBox">
+
+            <div class="crous crous1" style="left: 0%; transform: translateX(50px) scale(1);">
+                <h1>Personal Details</h1>
+                <form id="form1" onsubmit="registerPersonal(event); return false;">
+                    <div class="inputBox">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" value="" onkeypress="validateName(event,'name','nameError')"
+                            placeholder="Enter your Full Name" />
+                        <p class="error" id="nameError">Check your Name*</p>
+                    </div>
+                    <div class="inputBox">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" onkeypress="validatePhone(event)"
+                            placeholder="Enter your Phone Number" />
+                        <p class="error" id="phoneError">Check your Phone Number*</p>
+                    </div>
+                    <div class="inputBox">
+                        <label>Gender:</label>
+                        <div class="radioBox" id="radio">
+                            <label class="genderLabel" for="male">Male</label>
+                            <input type="radio" value="Male" id="male" name="gender" />
+
+                            <label class="genderLabel" for="female">Female</label>
+                            <input type="radio" value="Female" id="female" name="gender" />
+
+                            <label class="genderLabel" for="other">Other</label>
+                            <input type="radio" value="Other" id="other" name="gender" />
+                        </div>
+                        <p class="error" id="genderError">Select Gender</p>
+                    </div>
+                    <div class="inputBox">
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" onkeypress="validateEmail(event)"
+                            placeholder="Enter your email" />
+                        <p class="error" id="emailError">Check your Email*</p>
+                    </div>
+                    <div class="inputBox">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" onkeypress="validateUser(event,'username','userError')"
+                            placeholder="Enter your username" />
+                        <p class="error" id="userError">Minimum length for username is 3*</p>
+                    </div>
+                    <div class="inputBox">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" onkeypress="validatePassword(event)"
+                            placeholder="Enter your password" />
+                        <img class="eye" id="passView" onclick="passShow(event)" src="./assets/images/view.png" alt="view" style="display: none;" />
+                        <img class="eye" id="passHide" onclick="passShow(event)" src="./assets/images/hide.png" alt="view" />
+                        <div class="tooltip">i
+                        </div>
+                        <div class="tooltipTxt">
+                            <ul>
+                                <li>- Minimum length should be 5</li>
+                                <li>- Must contain atleast one special character</li>
+                                <li>- Must contain atleast one digit</li>
+                                <li>- Must contain atleast one uppercase</li>
+                                <li>- Must contain atleast one lowercase</li>
+                            </ul>
+                        </div>
+                        <p class="error" id="passError"></p>
+                    </div>
+                    <div class="inputBox">
+                        <label for="cPassword">Confirm<br />Password:</label>
+                        <input type="password" id="cPassword" onkeypress="validateCPassword(event)"
+                            placeholder="Retype Password" />
+                            <img class="eye" id="cPassView" onclick="cPassShow(event)" src="./assets/images/view.png" alt="view" style="display: none;" />
+                            <img class="eye" id="cPassHide" onclick="cPassShow(event)" src="./assets/images/hide.png" alt="view" />
+                        <p class="error" id="cPassError"></p>
+                    </div>
+                    <div class="btnGroup">
+                        <button type="button" onclick="savePers(event)">Save</button>
+                        <button type="submit">Next</button>
+                    </div>
+
+                </form>
+            </div>
+
+
+            <div class="crous crous2" style="left: 90%;">
+                <h1>Team Information</h1>
+                <form id="form2" onsubmit="registerTeam(event); return false;">
+                    <div class="inputBox" style="width: 100%;">
+                        <label for="teamName">Team Name:</label>
+                        <input type="text" id="teamName" value=""
+                            onkeypress="validateName(event,'teamName','teamError')" placeholder="Enter team name" />
+                        <p class="error" id="teamError">Check your Name*</p>
+                    </div>
+                    <h4 style="width: 100%; text-align: center; margin-bottom: 10px;">PLAYER 1</h4>
+                    <div class="inputBox">
+                        <label for="nPl1">Name:</label>
+                        <input type="text" id="nPl1" onkeypress="validateName(event,'nPl1','nPl1Error')"
+                            placeholder="Enter Player1 Name" />
+                        <p class="error" id="nPl1Error">Check your Name*</p>
+                    </div>
+                    <div class="inputBox">
+                        <label for="rPl1">Riot Id:</label>
+                        <input type="text" id="rPl1" onkeypress="validateUser(event,'rPl1','rPl1Error')"
+                            placeholder="Enter Player1 Riot Id" />
+                        <p class="error" id="rPl1Error">Check your Id*</p>
+                    </div>
+
+                    <h4 style="width: 100%; text-align: center; margin-bottom: 10px;">PLAYER 2</h4>
+                    <div class="inputBox">
+                        <label for="nPl2">Name:</label>
+                        <input type="text" id="nPl2" onkeypress="validateName(event,'nPl2','nPl2Error')"
+                            placeholder="Enter Player2 Name" />
+                        <p class="error" id="nPl2Error">Check your Name*</p>
+                    </div>
+                    <div class="inputBox">
+                        <label for="rPl2">Riot Id:</label>
+                        <input type="text" id="rPl2" onkeypress="validateUser(event,'rPl2','rPl2Error')"
+                            placeholder="Enter Player2 Riot Id" />
+                        <p class="error" id="rPl2Error">Check your Id*</p>
+                    </div>
+
+                    <h4 style="width: 100%; text-align: center; margin-bottom: 10px;">PLAYER 3</h4>
+                    <div class="inputBox">
+                        <label for="nPl3">Name:</label>
+                        <input type="text" id="nPl3" onkeypress="validateName(event,'nPl3','nPl3Error')"
+                            placeholder="Enter Player3 Name" />
+                        <p class="error" id="nPl3Error">Check your Name*</p>
+                    </div>
+                    <div class="inputBox">
+                        <label for="rPl3">Riot Id:</label>
+                        <input type="text" id="rPl3" onkeypress="validateUser(event,'rPl3','rPl3Error')"
+                            placeholder="Enter Player3 Riot Id" />
+                        <p class="error" id="rPl3Error">Check your Id*</p>
+                    </div>
+
+                    <h4 style="width: 100%; text-align: center; margin-bottom: 10px;">PLAYER 4</h4>
+                    <div class="inputBox">
+                        <label for="nPl4">Name:</label>
+                        <input type="text" id="nPl4" onkeypress="validateName(event,'nPl4','nPl4Error')"
+                            placeholder="Enter Player4 Name" />
+                        <p class="error" id="nPl4Error">Check your Name*</p>
+                    </div>
+                    <div class="inputBox">
+                        <label for="rPl4">Riot Id:</label>
+                        <input type="text" id="rPl4" onkeypress="validateUser(event,'rPl4','rPl4Error')"
+                            placeholder="Enter Player4 Riot Id" />
+                        <p class="error" id="rPl4Error">Check your Id*</p>
+                    </div>
+
+                    <div class="btnGroup">
+                        <button type="button" onclick="shiftRight()">Back</button>
+                        <button type="button" onclick="saveTeam()">Save</button>
+                        <button type="submit">Next</button>
+                    </div>
+
+                </form>
+            </div>
+
+
+            <div class="crous crous3" style="left: 190%;">
+                <h1 style="text-align: center; width: 100%; margin-bottom: 15px;">Terms & Conditions</h1>
+                <div class="termsTxt">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
+                        expedita animi officia maiores nulla assumenda autem voluptatem saepe minus dolor quisquam eius
+                        pariatur suscipit exercitationem odit ipsam!</p>
+                </div>
+                <div class="checkDiv" id="checkBox">
+                    <input id="agree" type="checkbox" />
+                    <label for="agree">I agree to these Terms and Conditions.</label>
+                </div>
+                <div class="btnGroup">
+                    <button type="button" onclick="shiftRight()">Back</button>
+                    <button type="submit" onclick="register()">Register</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="loaderBox" id="load">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <script src="./assets/script/registration.js"></script>
+
+
+</body>
+
+</html>
