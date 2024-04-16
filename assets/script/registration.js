@@ -366,6 +366,11 @@ const register = () => {
     document.getElementById('barIcon3').style.backgroundColor = "var(--tertiaryColor)"
     const loader = document.getElementById("load");
     loader.style.display = "grid";
+
+    let fData = JSON.parse(localStorage.getItem('data'));
+    localStorage.setItem('fData',JSON.stringify(fData));
+    localStorage.removeItem('data');
+
     setTimeout(() => {
         document.getElementById("form1").reset();
         document.getElementById("form2").reset();

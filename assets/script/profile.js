@@ -1,4 +1,4 @@
-const data = JSON.parse(localStorage.getItem('data'));
+const data = JSON.parse(localStorage.getItem('fData'));
 
 console.log(data)
 
