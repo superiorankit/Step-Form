@@ -45,7 +45,7 @@ else {
 
 const registerPersonal = (e) => {
     event.preventDefault();
-
+    
     const name = e.target.name.value.trim();
     const phone = e.target.phone.value.trim();
     const email = e.target.email.value.trim();
@@ -707,8 +707,165 @@ const saveTeam = () => {
 
 }
 
-const validateName = (e, vname, error) => {
 
+// const persButton = (e) => {
+//     let name = document.getElementById("name").value.trim();
+//     let phone = document.getElementById("phone").value.trim();
+//     let email = document.getElementById("email").value.trim();
+//     let username = document.getElementById("username").value.trim();
+//     let password = document.getElementById("password").value.trim();
+//     let cPassword = document.getElementById("cPassword").value.trim();
+
+//     const arr = ["male", "female", "other"];
+//     let gender;
+//     arr.forEach((gen) => {
+//         if (document.getElementById(gen).checked) {
+//             gender = gen;
+//         }
+
+//     });
+
+
+
+
+//     let isValid = true;
+
+//     // Validation function for name
+//     const checkName = () => {
+
+//         for (let char of name) {
+//             if (!((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') || char === " ")) {
+//                 return true;
+//             }
+//         }
+
+//     }
+
+
+
+//     if(e.target.id === "name")
+//     {
+//         name = name+e.key;
+//     }
+
+//     if (name.length === 0 || checkName()) {
+//         isValid = false;
+//     }
+
+//     if(e.target.id === "phone")
+//     {
+//         phone = phone+e.key;
+//     }
+
+
+//     if (phone.length === 0 || (phone.includes('e') || phone.includes('E') || isNaN(phone) || phone.length !== 10)) {
+//         isValid = false;
+//     }
+
+//     //Validation function for email
+//     const checkEmail = () => {
+
+//         if (!email) {
+//             return false;
+//         }
+
+//         if (email.includes(" ")) {
+//             return false;
+//         }
+
+//         const atIndex = email.indexOf('@');
+//         if (atIndex === -1 || atIndex === 0 || atIndex === email.length - 1) {
+//             return false;
+//         }
+
+//         const dotIndex = email.indexOf('.', atIndex);
+//         if (dotIndex === -1 || dotIndex === atIndex + 1 || dotIndex === email.length - 1) {
+//             return false;
+//         }
+
+//         const lastIndex = email.length - 1;
+
+//         if (email.charAt(lastIndex) === "@" || email.charAt(lastIndex) === ".") {
+//             return false;
+//         }
+
+//         return true;
+//     }
+
+//     if(e.target.id === "email")
+//     {
+//         email = email+e.key;
+//     }
+
+//     if (email.length === 0 || !checkEmail()) {
+//         isValid = false;
+//     }
+
+//     if(e.target.id === "username")
+//     {
+//         username = username+e.key;
+//     }
+
+//     if (username.length === 0 || (username.length < 3 || username.includes(" "))) {
+//         isValid = false;
+//     }
+
+//     // Validating function for password for having atleast one character,both cases and digit.
+//     const checkPassword = () => {
+//         let hasUpperCase = false;
+//         let hasLowerCase = false;
+//         let hasDigit = false;
+//         let hasSpecialChar = false;
+
+//         for (let char of password) {
+//             if (char >= 'A' && char <= 'Z') {
+//                 hasUpperCase = true;
+//             } else if (char >= 'a' && char <= 'z') {
+//                 hasLowerCase = true;
+//             } else if (char >= '0' && char <= '9') {
+//                 hasDigit = true;
+//             } else {
+//                 hasSpecialChar = true;
+//             }
+//         }
+
+//         return hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar;
+//     }
+
+//     document.getElementById('passError').style.display = "none";
+//     document.getElementById('cPassError').style.display = "none";
+
+//     if(e.target.id === "password")
+//     {
+//         password = password+e.key;
+//     }
+
+//     if (password.length === 0 || (password.length < 5 || !checkPassword())) {
+//         isValid = false;
+//     }
+
+//     if(e.target.id === "cPassword")
+//     {
+//         cPassword = cPassword+e.key;
+//     }
+
+//     if (password !== cPassword) {
+//         isValid = false;
+//     }
+
+//     if (isValid) {
+//         alert("enable");
+//     }
+//     else{
+//         alert("disable")
+//     }
+
+
+
+// }
+
+
+const validateName = (e, vname, error) => {
     document.getElementById(error).style.display = 'none';
     const name = document.getElementById(vname);
     name.style.border = "none"
@@ -723,8 +880,10 @@ const validateName = (e, vname, error) => {
 }
 
 const validatePhone = (e) => {
-    document.getElementById('phoneError').style.display = 'none';
     const phone = document.getElementById("phone");
+
+    document.getElementById('phoneError').style.display = 'none';
+;
     phone.style.border = "none"
     if (isNaN(e.key) || e.key === " ") {
         // document.getElementById('phoneError').style.display = 'block';
@@ -740,7 +899,6 @@ const validatePhone = (e) => {
 }
 
 const validateEmail = (e) => {
-
     document.getElementById('emailError').style.display = 'none';
     const email = document.getElementById("email");
     email.style.border = "none"
@@ -766,7 +924,6 @@ const validateUser = (e, userName, userError) => {
 }
 
 const validatePassword = (e) => {
-
     document.getElementById('passError').style.display = 'none';
     const password = document.getElementById("password");
     password.style.border = "none"
@@ -781,7 +938,6 @@ const validatePassword = (e) => {
 }
 
 const validateCPassword = (e) => {
-
     document.getElementById('cPassError').style.display = 'none';
     const cpassword = document.getElementById("cPassword");
     cpassword.style.border = "none"
