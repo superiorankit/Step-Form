@@ -1,6 +1,13 @@
-const data = JSON.parse(localStorage.getItem('fData'));
+const searchParams = new URLSearchParams(window.location.search);
+let id = searchParams.get('id');
 
-console.log(data)
+
+let user = JSON.parse(localStorage.getItem('user'));
+let data = user.filter((data)=> {
+    return data.id === id
+    })
+
+data = data[0];
 
 document.getElementById("name").innerHTML=data.personalInformation.name;
 document.getElementById("phone").innerHTML=data.personalInformation.phone;

@@ -119,7 +119,7 @@ li{
     background: linear-gradient(45deg, #ffffff14, transparent), #0d1423de;
     backdrop-filter: blur(3px);
     border-radius: 42px;
-    transform: translateX(50px) scale(0.9);
+    transform: translateX(50px) scale(1);
     margin-top: 1%;
     overflow-y: scroll;
 }
@@ -300,11 +300,11 @@ button {
     margin: 0 7px;
 }
 
-button:hover {
+.persNextHover:hover,.persSaveHover:hover,.back:hover,.teamSaveHover:hover,.teamNextHover:hover, .register:hover {
     background-color: #e90030;
 }
 
-button:active{
+.persNextHover:active,.persSaveHover:active,.back:active,.teamSaveHover:active,.teamNextHover:active, .register:active{
     transform: scale(0.8);
 }
 

@@ -22,7 +22,7 @@
 
         <div class="barBox">
             <div class="barBlue">
-                <div class="barRed" id="barRed"></div>
+                <div class="barRed" id="barRed" style="width: 0%;"></div>
             </div>
 
             <div class="barIcon" id="barIcon1">
@@ -42,18 +42,18 @@
 
         <div class="crousBox">
 
-            <div class="crous crous1" style="left: 0%; transform: translateX(50px) scale(1);">
+            <div class="crous crous1" id="crous1" style="display: flex">
                 <h1>Personal Details</h1>
-                <form id="form1" onsubmit="registerPersonal(event); return false;">
+                <form id="form1" onsubmit="validateSave(event); return false;">
                     <div class="inputBox">
                         <label for="name">Full Name:</label>
-                        <input type="text" id="name" value="" onkeypress="validateName(event,'name','nameError')"
+                        <input type="text" id="name" name="name" value="" oninput="handleKey(event,'name')"
                             placeholder="Enter your Full Name" />
                         <p class="error" id="nameError">Check your Name*</p>
                     </div>
                     <div class="inputBox">
                         <label for="phone">Phone:</label>
-                        <input type="tel" id="phone" onkeypress="validatePhone(event)"
+                        <input type="tel" id="phone" name="phone" onkeypress="phoneLength(event)" oninput="handleKey(event,'phone')"
                             placeholder="Enter your Phone Number" />
                         <p class="error" id="phoneError">Check your Phone Number*</p>
                     </div>
@@ -61,31 +61,33 @@
                         <label>Gender:</label>
                         <div class="radioBox" id="radio">
                             <label class="genderLabel" for="male">Male</label>
-                            <input type="radio" value="Male" id="male" name="gender" />
+                            <input type="radio" oninput="isFill('form1')" value="Male" id="male" name="gender" />
 
                             <label class="genderLabel" for="female">Female</label>
-                            <input type="radio" value="Female" id="female" name="gender" />
+                            <input type="radio" oninput="isFill('form1')" value="Female" id="female" name="gender" />
 
                             <label class="genderLabel" for="other">Other</label>
-                            <input type="radio" value="Other" id="other" name="gender" />
+                            <input type="radio" oninput="isFill('form1')" value="Other" id="other" name="gender" />
                         </div>
                         <p class="error" id="genderError">Select Gender</p>
                     </div>
                     <div class="inputBox">
                         <label for="email">Email:</label>
-                        <input type="text" id="email" onkeypress="validateEmail(event)"
+                        <input type="text" id="email" name="email" oninput="handleKey(event,'email')"
                             placeholder="Enter your email" />
                         <p class="error" id="emailError">Check your Email*</p>
+                        <p class="error" id="emailAlready">Email Already Registered*</p>
                     </div>
                     <div class="inputBox">
                         <label for="username">Username:</label>
-                        <input type="text" id="username" onkeypress="validateUser(event,'username','userError')"
+                        <input type="text" id="username" name="username" oninput="handleKey(event,'user')"
                             placeholder="Enter your username" />
                         <p class="error" id="userError">Minimum length for username is 3*</p>
+                        <p class="error" id="userNot">Username not Available*</p>
                     </div>
                     <div class="inputBox">
                         <label for="password">Password:</label>
-                        <input type="password" id="password" onkeypress="validatePassword(event)"
+                        <input type="password" id="password" name="password" oninput="handleKey(event,'password')"
                             placeholder="Enter your password" />
                         <img class="eye" id="passView" onclick="passShow(event)" src="./assets/images/view.png" alt="view" style="display: none;" />
                         <img class="eye" id="passHide" onclick="passShow(event)" src="./assets/images/hide.png" alt="view" />
@@ -100,44 +102,45 @@
                                 <li>- Must contain atleast one lowercase</li>
                             </ul>
                         </div>
-                        <p class="error" id="passError"></p>
+                        <p class="error" id="passError">Password must be 5+ characters with at least one spc. character, uppercase, lowercase, and digit*</p>
                     </div>
                     <div class="inputBox">
                         <label for="cPassword">Confirm<br />Password:</label>
-                        <input type="password" id="cPassword" onkeypress="validateCPassword(event)"
+                        <input type="password" id="cPassword" name="cPassword" oninput="handleKey(event,'password')"
                             placeholder="Retype Password" />
                             <img class="eye" id="cPassView" onclick="cPassShow(event)" src="./assets/images/view.png" alt="view" style="display: none;" />
                             <img class="eye" id="cPassHide" onclick="cPassShow(event)" src="./assets/images/hide.png" alt="view" />
                         <p class="error" id="cPassError"></p>
                     </div>
                     <div class="btnGroup">
-                        <button type="button" onclick="savePers(event)">Save</button>
-                        <button type="submit" id="persButt">Save & Next</button>
+                        <button type="submit" class="persSaveHover" id="persSave">Save</button>
+                        <button type="submit" id="persNext" disabled>Save & Next</button>
                     </div>
 
                 </form>
             </div>
 
 
-            <div class="crous crous2" style="left: 90%;">
+            <div class="crous crous2" id="crous2" style="display: none">
                 <h1>Team Information</h1>
-                <form id="form2" onsubmit="registerTeam(event); return false;">
+                <form id="form2" onsubmit="validateSave(event); return false;">
                     <div class="inputBox" style="width: 100%;">
-                        <label for="teamName">Team Name:</label>
-                        <input type="text" id="teamName" value=""
-                            onkeypress="validateName(event,'teamName','teamError')" placeholder="Enter team name" />
+                        <label for="teamName" >Team Name:</label>
+                        <input type="text" id="teamName" value="" name="name"
+                        oninput="handleKey(event,'name')" placeholder="Enter team name" />
                         <p class="error" id="teamError">Check your Name*</p>
+                        <p class="error" id="teamNot">Team Name not Available*</p>
                     </div>
                     <h4 style="width: 100%; text-align: center; margin-bottom: 10px;">PLAYER 1</h4>
                     <div class="inputBox">
                         <label for="nPl1">Name:</label>
-                        <input type="text" id="nPl1" onkeypress="validateName(event,'nPl1','nPl1Error')"
+                        <input type="text" id="nPl1" name="name" oninput="handleKey(event,'name')"
                             placeholder="Enter Player1 Name" />
                         <p class="error" id="nPl1Error">Check your Name*</p>
                     </div>
                     <div class="inputBox">
                         <label for="rPl1">Riot Id:</label>
-                        <input type="text" id="rPl1" onkeypress="validateUser(event,'rPl1','rPl1Error')"
+                        <input type="text" id="rPl1" name="username" oninput="handleKey(event,'user')"
                             placeholder="Enter Player1 Riot Id" />
                         <p class="error" id="rPl1Error">Check your Id*</p>
                     </div>
@@ -145,13 +148,13 @@
                     <h4 style="width: 100%; text-align: center; margin-bottom: 10px;">PLAYER 2</h4>
                     <div class="inputBox">
                         <label for="nPl2">Name:</label>
-                        <input type="text" id="nPl2" onkeypress="validateName(event,'nPl2','nPl2Error')"
+                        <input type="text" id="nPl2" name="name" oninput="handleKey(event,'name')"
                             placeholder="Enter Player2 Name" />
                         <p class="error" id="nPl2Error">Check your Name*</p>
                     </div>
                     <div class="inputBox">
                         <label for="rPl2">Riot Id:</label>
-                        <input type="text" id="rPl2" onkeypress="validateUser(event,'rPl2','rPl2Error')"
+                        <input type="text" id="rPl2" name="username" oninput="handleKey(event,'user')"
                             placeholder="Enter Player2 Riot Id" />
                         <p class="error" id="rPl2Error">Check your Id*</p>
                     </div>
@@ -159,13 +162,13 @@
                     <h4 style="width: 100%; text-align: center; margin-bottom: 10px;">PLAYER 3</h4>
                     <div class="inputBox">
                         <label for="nPl3">Name:</label>
-                        <input type="text" id="nPl3" onkeypress="validateName(event,'nPl3','nPl3Error')"
+                        <input type="text" id="nPl3" name="name"  oninput="handleKey(event,'name')"
                             placeholder="Enter Player3 Name" />
                         <p class="error" id="nPl3Error">Check your Name*</p>
                     </div>
                     <div class="inputBox">
                         <label for="rPl3">Riot Id:</label>
-                        <input type="text" id="rPl3" onkeypress="validateUser(event,'rPl3','rPl3Error')"
+                        <input type="text" id="rPl3" name="username" oninput="handleKey(event,'user')"
                             placeholder="Enter Player3 Riot Id" />
                         <p class="error" id="rPl3Error">Check your Id*</p>
                     </div>
@@ -173,28 +176,28 @@
                     <h4 style="width: 100%; text-align: center; margin-bottom: 10px;">PLAYER 4</h4>
                     <div class="inputBox">
                         <label for="nPl4">Name:</label>
-                        <input type="text" id="nPl4" onkeypress="validateName(event,'nPl4','nPl4Error')"
+                        <input type="text" id="nPl4" name="name" oninput="handleKey(event,'name')"
                             placeholder="Enter Player4 Name" />
                         <p class="error" id="nPl4Error">Check your Name*</p>
                     </div>
                     <div class="inputBox">
                         <label for="rPl4">Riot Id:</label>
-                        <input type="text" id="rPl4" onkeypress="validateUser(event,'rPl4','rPl4Error')"
+                        <input type="text" id="rPl4" name="username" oninput="handleKey(event,'user')"
                             placeholder="Enter Player4 Riot Id" />
                         <p class="error" id="rPl4Error">Check your Id*</p>
                     </div>
 
                     <div class="btnGroup">
-                        <button type="button" onclick="shiftRight()">Back</button>
-                        <button type="button" onclick="saveTeam()">Save</button>
-                        <button type="submit">Save & Next</button>
+                        <button type="button" class="back" onclick="prev()">Back</button>
+                        <button type="submit" class="teamSaveHover" id="teamSave">Save</button>
+                        <button type="submit" class="teamNextHover" id="teamNext">Save & Next</button>
                     </div>
 
                 </form>
             </div>
 
 
-            <div class="crous crous3" style="left: 190%;">
+            <div class="crous crous3" id="crous3" style="display:none">
                 <h1 style="text-align: center; width: 100%; margin-bottom: 15px;">Terms & Conditions</h1>
                 <div class="termsTxt">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, distinctio quibusdam quod
@@ -242,8 +245,8 @@
                     <label for="agree">I agree to these Terms and Conditions.</label>
                 </div>
                 <div class="btnGroup">
-                    <button type="button" onclick="shiftRight()">Back</button>
-                    <button type="submit" onclick="register()">Register</button>
+                    <button type="button" class="back" onclick="prev()">Back</button>
+                    <button type="submit" class="register" onclick="register()">Register</button>
                 </div>
             </div>
 
