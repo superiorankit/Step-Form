@@ -334,6 +334,9 @@ const handleKey = (e, regKey) => {
 
 }
 
+
+
+
 const phoneLength = (e)=>{
     if (e.target.value.length > 9) {
         event.preventDefault();
