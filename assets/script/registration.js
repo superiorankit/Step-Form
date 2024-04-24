@@ -3,6 +3,8 @@ let user = JSON.parse(localStorage.getItem('user'));
 
 const onLoadFillData = () => {
 
+    console.log(data)
+
     if (!data) {
         data = {
             personalInformation: {},
@@ -322,6 +324,7 @@ const handleKey = (e, regKey) => {
     }
 
     const value = e.target.value;
+    console.log(value)
     const tag = e.target;
 
     tag.style.border = "none"
@@ -334,12 +337,9 @@ const handleKey = (e, regKey) => {
 
 }
 
-
-
-
 const phoneLength = (e)=>{
     if (e.target.value.length > 9) {
-        event.preventDefault();
+        e.preventDefault();
     }
 }
 
